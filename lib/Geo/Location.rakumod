@@ -33,9 +33,9 @@ submethod TWEAK {
     elsif $!json.defined {
         self!new-from-json
     }
-    elsif %*ENV<GEO_LOCATION>:exists 
-        and %*ENV<GEO_LOCATION> ~~ /'lat('/ 
-        and %*ENV<GEO_LOCATION> ~~ /'lon('/ 
+    elsif %*ENV<GEO_LOCATION>:exists
+        and %*ENV<GEO_LOCATION> ~~ /'lat('/
+        and %*ENV<GEO_LOCATION> ~~ /'lon('/
         and %*ENV<GEO_LOCATION>.chars > 12 {
         # absolute minimum value: lat(0),lon(0)
         self!new-from-env
@@ -91,7 +91,7 @@ method lon-rst(:$debug --> Str) {
     self.riseset-format: :lon
 }
 
-method riseset-format(:$location, 
+method riseset-format(:$location,
                       :$lat,
                       :$lon,
                       :$debug --> Str) {
@@ -181,7 +181,7 @@ method !new-from-json {
     }
 }
 
-method !new-from-env {
+method !new-from-env(:$debug) {
     # 11 recognized attributes
     # some test cases:
     #     GEOLOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
@@ -190,8 +190,38 @@ method !new-from-env {
     my $s = %*ENV<GEO_LOCATION> // '';
     die "FATAL: Empty or undefined env var GEO_LOCATION" if not $s;
     my @w = split ',', $s;
-    
-    
+    for @w -> $w {
+        note "  attr(val): |$w|" if $debug;
+        my ($attr, $val);;
+        if $w ~~ /(\w+) '('
+                    [\'|\"]?
+                  (<-[\(\)\'\"]>+)
+                    [\'|\"]?
+                 ')' $/ {
+            $attr = ~$0;
+            $val  = ~$1;
+        }
+        else {
+            die "FATAL: Unable to parse |$w|";
+        }
+        note "    parsed: {$attr}({$val})" if $debug;
+
+        # use same scheme as new-from-json
+        # 11 recognized attributes
+        die "FATAL: Unknown attribute '$attr'" unless %attrs{$attr}:exists;
+
+        when $attr eq 'city'     { $!city     = $val }
+        when $attr eq 'country'  { $!country  = $val }
+        when $attr eq 'county'   { $!county   = $val }
+        when $attr eq 'id'       { $!id       = $val }
+        when $attr eq 'lat'      { $!lat      = $val }
+        when $attr eq 'lon'      { $!lon      = $val }
+        when $attr eq 'name'     { $!name     = $val }
+        when $attr eq 'notes'    { $!notes    = $val }
+        when $attr eq 'region'   { $!region   = $val }
+        when $attr eq 'state'    { $!state    = $val }
+        when $attr eq 'timezone' { $!timezone = $val }
+    }
 }
 
 method !new-from-defaults {
