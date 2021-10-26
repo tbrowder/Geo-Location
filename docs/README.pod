@@ -75,17 +75,53 @@ $ export GEOLOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
 
 =head3 Class attributes
 
+There are eleven total public attributes in the class.
+
 =item city
-=item country  # two-char ISO code
+
+=begin item
+=item country  
+
+typically a two-character ISO code
+=end item
+
 =item county
-=item id       # a unique id in a collection
+
+=begin item 
+id       
+
+use as unique reference in a collection
+=end item
+
 =item lat
 =item lon
-=item name     # a convenient display name
+
+=begin item 
+name     
+
+a convenient display name
+=end item
+
 =item notes
-=item region   # EU, etc., multi-country area with DST rules
-=item state    # two-letter ISO code
-=item timezone # for use with module DateTime::US
+
+=begin item
+region 
+
+B<EU>, etc., multi-country area with DST rules
+=end item
+
+=begin item 
+state    
+
+typically a two-letter ISO code, for example, a US state
+=end item
+
+=begin item 
+timezone 
+
+use as a reference time zone abbreviation for use with module B<DateTime::US>
+=end item
+
 
 =head3 Class methods
 
@@ -94,19 +130,19 @@ listed above, the following added methods provide some
 other ways of showing object data.
 
 =begin item
-lat-dms(--> Str) {...}
+B<lat-dms>(--> Str) {...}
 
 Returns the latitude in DMS format
 =end item
 
 =begin item
-lon-dms(--> Str) {...}
+B<lon-dms>(--> Str) {...}
 
 Returns the longitude in DMS format
 =end item
 
 =begin item
-riseset-format(--> Str) {...}
+B<riseset-format>(--> Str) {...}
 
 Returns the format required by the Perl program 'riseset.pl' in
 CPAN Perl module 'Astro::Montenbruck::RiseSet::RST'
@@ -120,19 +156,19 @@ as 'B<RST>'):
 =end item
 
 =begin item
-lat-rst(--> Str) {...}
+B<lat-rst>(--> Str) {...}
 
 Returns the latitude in RST format
 =end item
 
 =begin item
-lon-rst(--> Str) {...}
+B<lon-rst>(--> Str) {...}
 
 Returns the longitude in RST format
 =end item
 
 =begin item
-location(:$format = 'decimal', --> Str) {
+B<location>(:$format = 'decimal', --> Str) {
 
 Returns the location in a single string in the specified format. For
 example:

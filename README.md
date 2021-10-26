@@ -56,55 +56,69 @@ Define desired attributes just like a manual entry but without the colons. Use d
 
 ### Class attributes
 
+There are eleven total public attributes in the class.
+
   * city
 
-  * country # two-char ISO code
+  *   * country 
+
+    typically a two-character ISO code
 
   * county
 
-  * id # a unique id in a collection
+  * id 
+
+    use as unique reference in a collection
 
   * lat
 
   * lon
 
-  * name # a convenient display name
+  * name 
+
+    a convenient display name
 
   * notes
 
-  * region # EU, etc., multi-country area with DST rules
+  * region 
 
-  * state # two-letter ISO code
+    **EU**, etc., multi-country area with DST rules
 
-  * timezone # for use with module DateTime::US
+  * state 
+
+    typically a two-letter ISO code, for example, a US state
+
+  * timezone 
+
+    use as a reference time zone abbreviation for use with module **DateTime::US**
 
 ### Class methods
 
 In addition to the methods provided for the public attributes listed above, the following added methods provide some other ways of showing object data.
 
-  * lat-dms(--> Str) {...}
+  * **lat-dms**(--> Str) {...}
 
     Returns the latitude in DMS format
 
-  * lon-dms(--> Str) {...}
+  * **lon-dms**(--> Str) {...}
 
     Returns the longitude in DMS format
 
-  * riseset-format(--> Str) {...}
+  * **riseset-format**(--> Str) {...}
 
     Returns the format required by the Perl program 'riseset.pl' in CPAN Perl module 'Astro::Montenbruck::RiseSet::RST' (in this module the format will also be referred to as '**RST**'):
 
         ./script/riseset.pl --place=56N26 37E09 --twilight=civil
 
-  * lat-rst(--> Str) {...}
+  * **lat-rst**(--> Str) {...}
 
     Returns the latitude in RST format
 
-  * lon-rst(--> Str) {...}
+  * **lon-rst**(--> Str) {...}
 
     Returns the longitude in RST format
 
-  * location(:$format = 'decimal', --> Str) {
+  * **location**(:$format = 'decimal', --> Str) {
 
     Returns the location in a single string in the specified format. For example:
 
