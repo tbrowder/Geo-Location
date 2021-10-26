@@ -144,6 +144,8 @@ To Do
 
   * Provide more methods for astronomical use
 
+  * Prove enums for use with argument entry
+
 AUTHOR
 ======
 
