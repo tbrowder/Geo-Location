@@ -141,7 +141,9 @@ In addition to the methods provided for the public attributes listed above, the 
 To Do
 =====
 
-Allow other forms of lat/lon entry besides decimal.
+  * Allow other forms of lat/lon entry besides decimal.
+
+  * Provide more methods for astronomical use
 
 AUTHOR
 ======
