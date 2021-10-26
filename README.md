@@ -135,7 +135,6 @@ In addition to the methods provided for the public attributes listed above, the 
     Or in RST:
 
         say $loc.location(:format('rst');
-        lat: N30d29m6s, lon: W86d26m15s
         lat: 56N26, lon: 37E09
 
 To Do
