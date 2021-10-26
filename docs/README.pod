@@ -36,7 +36,7 @@ a bit trickier for my tastes, hence my use of a PC for
 real mapping uses.)
 
 Note the object has only two required parameters ($lat, $lon),
-but there are nine other attribute available. See them
+but there are nine other attributes available. See them
 listed below.
 
 =head3 Class construction
@@ -67,7 +67,10 @@ but without the colons. Use double quotes on the
 entire value and single quotes inside, or the
 reverse, as desired. Note also strings without
 spaces do not require quotes inside the
-parentheses.
+parentheses. Note also this is only used when (1)
+no manual or json methods are used and (2)
+a valid C<GEO_LOCATION> environment variable
+is defined in the using environment.
 
 =begin code
 $ export GEOLOCATION="lat(42.4),lon(13.6),name('Baz Beach')";

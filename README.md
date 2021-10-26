@@ -29,7 +29,7 @@ DESCRIPTION
 
 For now one must enter latitude and longitude using signed decimal numbers. One easy way to find those for a location is to use Google Maps (on a PC) and drop a location pin with its point at the place of interest. Then select the pin, right-click, and see the lat/lon on the first line of data. (I have had some success also with doing that on an iPad, but it's a bit trickier for my tastes, hence my use of a PC for real mapping uses.)
 
-Note the object has only two required parameters ($lat, $lon), but there are nine other attribute available. See them listed below.
+Note the object has only two required parameters ($lat, $lon), but there are nine other attributes available. See them listed below.
 
 ### Class construction
 
@@ -50,7 +50,7 @@ Use a JSON description:
 
 Use an environment variable:
 
-Define desired attributes just like a manual entry but without the colons. Use double quotes on the entire value and single quotes inside, or the reverse, as desired. Note also strings without spaces do not require quotes inside the parentheses.
+Define desired attributes just like a manual entry but without the colons. Use double quotes on the entire value and single quotes inside, or the reverse, as desired. Note also strings without spaces do not require quotes inside the parentheses. Note also this is only used when (1) no manual or json methods are used and (2) a valid `GEO_LOCATION` environment variable is defined in the using environment.
 
     $ export GEOLOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
 

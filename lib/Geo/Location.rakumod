@@ -8,8 +8,8 @@ my %attrs; # defined in BEGIN block just prior to EOF
 has $.lat;  # decimal degrees: +north, -south
 has $.lon;  # decimal degrees: +east, -west
 
-# if lat/lon are not entered, then check these:
-# checked for instantiation in this order
+# if lat/lon are not entered, then check these
+# for instantiation:
 has Str $.json;
 
 # other known attributes
