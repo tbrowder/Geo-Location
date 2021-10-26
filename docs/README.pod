@@ -194,7 +194,6 @@ Or in RST:
 
 =begin code
 say $loc.location(:format('rst');
-lat: N30d29m6s, lon: W86d26m15s
 lat: 56N26, lon: 37E09
 =end code
 
