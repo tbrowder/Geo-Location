@@ -1,0 +1,26 @@
+{
+  "auth": "cpan:TBROWDER",
+  "authors": [
+    "Tom Browder"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+    "JSON::Fast"
+  ],
+  "description": "blah blah blah",
+  "license": "Artistic-2.0",
+  "name": "Geo::Location",
+  "perl": "6.d",
+  "provides": {
+    "Geo::Location": "lib/Geo/Location.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "",
+  "tags": [
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}

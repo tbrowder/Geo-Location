@@ -1,0 +1,104 @@
+=begin pod
+
+=head1 NAME
+
+C<Geo::Location> - Provides location data for astronomical and other programs
+
+=head1 SYNOPSIS
+
+Use the default location:
+
+=begin code :lang<raku>
+$ raku
+> use Geo::Location;
+> my $loc = Location.new; # note no arguments entered here
+> say $loc.name;
+Gulf Breeze, FL, USA
+> say $loc.location;
+lat: 30.485092, lon: -86.4376157
+say $loc.lat;
+say $loc.long;
+=end code
+
+=head1 DESCRIPTION
+
+B<Geo::Location> Allows the user to define a geographical location
+for easy use either by manual entry, from a JSON description, or
+an environment variable (C<GEO_LOCATION>).
+
+For now one must enter latitude and longitude using signed decimal
+numbers. One easy way to find those for a location is to use
+Google Maps (on a PC) and drop a location pin with its point
+at the place of interest. Then select the pin, right-click
+and see the lat/lon on the first line of data. (I have
+had some success also with doing that on an iPad, but it's
+a bit trickier for my tastes, hence my use of the PC for
+real mapping uses.)
+
+Note the object has only two required parameters ($lat, $lon),
+but there are nine other attribute available. See them
+listed below.
+
+=head3 Class construction
+
+Use the manual entry:
+
+=begin code
+my $loc = Geo::Location.new: :lat(-36.23), :lon(+12);
+=end code
+
+Use a JSON description:
+
+=begin code
+my $json = q:to/HERE/;
+{
+    "name" : "Foo Town",
+    "lat"  : 35.267,
+    "lon"  : -42.3
+}
+HERE
+my $loc = Geo::Location.new: :$json;
+=end code
+
+Use an environment variable:
+
+Define desired attributes just like a manual entry
+but without the colons. Use double quotes on the
+entire value and single quotes inside, or the
+reverse, as desired. Note also strings without
+spaces do not require quotes inside the
+parentheses.
+
+=begin code
+$ export GEOLOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
+=end code
+
+=head3 Class attributes
+
+=item city
+=item country  # two-char ISO code
+=item county
+=item id       # a unique id in a collection
+=item lat
+=item lon
+=item name     # a convenient display name
+=item notes
+=item region   # EU, etc., multi-country area with DST rules
+=item state    # two-letter ISO code
+=item timezone # for use with module DateTime::US
+
+=head1 To Do
+
+Allow other forms of lat/lon entry besides decimal.
+
+=head1 AUTHOR
+
+Tom Browder C<tom.browder@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+E<0x00a9> 2020 Tom Browder
+
+This library is free software; you may redistribute it or modify it under the Artistic License 2.0.
+
+=end pod

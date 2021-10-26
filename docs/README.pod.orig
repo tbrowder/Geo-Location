@@ -1,0 +1,39 @@
+=begin pod
+
+=head1 NAME
+
+C<Geo::Location> - Provides location data for astronomical and other programs
+
+=head1 SYNOPSIS
+
+=begin code :lang<raku>
+$ raku
+> use Geo::Location;
+> my $loc = Location.new;
+> say $loc.name;
+Gulf Breeze, FL, USA
+> say $loc.location;
+lat: 30.485092, lon: -86.4376157
+=end code
+
+=head1 DESCRIPTION
+
+B<Geo::Location> Provides location data for
+astronomical and other programs.
+
+=head1 See also related modules by the same author:
+
+=item L<C<Astro::Almanac>|https://github.com/tbrowder/Astro-Almanac>
+=item L<C<Calendar>|https://github.com/tbrowder/Calendar>
+
+=head1 AUTHOR
+
+Tom Browder C<tom.browder@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+E<0x00a9> 2020 Tom Browder
+
+This library is free software; you may redistribute it or modify it under the Artistic License 2.0.
+
+=end pod
