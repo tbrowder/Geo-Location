@@ -204,6 +204,7 @@ lat: 56N26, lon: 37E09
 
 =item Allow other forms of lat/lon entry besides decimal
 =item Provide more methods for astronomical use
+=item Prove enums for use with argument entry
 
 =head1 AUTHOR
 
