@@ -80,7 +80,7 @@ There are eleven total public attributes in the class.
 =item city
 
 =begin item
-=item country  
+country  
 
 typically a two-character ISO code
 =end item

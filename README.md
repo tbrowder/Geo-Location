@@ -60,7 +60,7 @@ There are eleven total public attributes in the class.
 
   * city
 
-  *   * country 
+  * country 
 
     typically a two-character ISO code
 
