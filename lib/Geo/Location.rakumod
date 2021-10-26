@@ -83,7 +83,18 @@ method lon-dms(:$debug --> Str) {
     return "{$lon-sym}{$lon-deg}d{$lon-min}m{$lon-sec}s";
 }
 
-method riseset-format(:$location, :$debug --> Str) {
+method lat-rst(:$debug --> Str) {
+    self.riseset-format: :lat
+}
+
+method lon-rst(:$debug --> Str) {
+    self.riseset-format: :lon
+}
+
+method riseset-format(:$location, 
+                      :$lat,
+                      :$lon,
+                      :$debug --> Str) {
     # Returns the format required by the Perl program 'riseset.pl' in
     # CPAN Perl module 'Astro::Montenbruck::RiseSet::RST':
     #
@@ -98,7 +109,13 @@ method riseset-format(:$location, :$debug --> Str) {
     my $lat-min = (($.lat.abs - $lat-deg).abs * 60.0).round;
     my $lon-min = (($.lon.abs - $lon-deg).abs * 60.0).round;
 
-    if $location {
+    if $lat {
+        return "{$lat-deg}{$lat-sym}{$lat-min}";
+    }
+    elsif $lon {
+        return "{$lon-deg}{$lon-sym}{$lon-min}";
+    }
+    elsif $location {
         my $loc = "lat: {$lat-deg}{$lat-sym}{$lat-min}, lon: {$lon-deg}{$lon-sym}{$lon-min}";
         return $loc;
     }

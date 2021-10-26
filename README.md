@@ -92,9 +92,17 @@ In addition to the methods provided for the public attributes listed above, the 
 
   * riseset-format(--> Str) {...}
 
-    Returns the format required by the Perl program 'riseset.pl' in CPAN Perl module 'Astro::Montenbruck::RiseSet::RST':
+    Returns the format required by the Perl program 'riseset.pl' in CPAN Perl module 'Astro::Montenbruck::RiseSet::RST' (in this module the format will also be referred to as '**RST**'):
 
         ./script/riseset.pl --place=56N26 37E09 --twilight=civil
+
+  * lat-rst(--> Str) {...}
+
+    Returns the latitude in RST format
+
+  * lon-rst(--> Str) {...}
+
+    Returns the longitude in RST format
 
   * location(:$format = 'decimal', --> Str) {
 
@@ -109,6 +117,12 @@ In addition to the methods provided for the public attributes listed above, the 
 
         say $loc.location(:format('dms');
         lat: N30d29m6s, lon: W86d26m15s
+
+    Or in RST:
+
+        say $loc.location(:format('rst');
+        lat: N30d29m6s, lon: W86d26m15s
+        lat: 56N26, lon: 37E09
 
 To Do
 =====

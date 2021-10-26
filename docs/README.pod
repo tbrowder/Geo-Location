@@ -105,16 +105,30 @@ lon-dms(--> Str) {...}
 Returns the longitude in DMS format
 =end item
 
-
 =begin item
 riseset-format(--> Str) {...}
 
 Returns the format required by the Perl program 'riseset.pl' in
-CPAN Perl module 'Astro::Montenbruck::RiseSet::RST':
+CPAN Perl module 'Astro::Montenbruck::RiseSet::RST'
+(in this module the format will also be referred to
+as 'B<RST>'):
 
 =begin code
 ./script/riseset.pl --place=56N26 37E09 --twilight=civil
 =end code
+
+=end item
+
+=begin item
+lat-rst(--> Str) {...}
+
+Returns the latitude in RST format
+=end item
+
+=begin item
+lon-rst(--> Str) {...}
+
+Returns the longitude in RST format
 =end item
 
 =begin item
@@ -136,6 +150,15 @@ Or in DMS:
 say $loc.location(:format('dms');
 lat: N30d29m6s, lon: W86d26m15s
 =end code
+
+Or in RST:
+
+=begin code
+say $loc.location(:format('rst');
+lat: N30d29m6s, lon: W86d26m15s
+lat: 56N26, lon: 37E09
+=end code
+
 
 =end item
 
