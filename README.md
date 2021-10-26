@@ -78,6 +78,38 @@ Define desired attributes just like a manual entry but without the colons. Use d
 
   * timezone # for use with module DateTime::US
 
+### Class methods
+
+In addition to the methods provided for the public attributes listed above, the following added methods provide some other ways of showing object data.
+
+  * lat-dms(--> Str) {...}
+
+    Returns the latitude in DMS format
+
+  * lon-dms(--> Str) {...}
+
+    Returns the longitude in DMS format
+
+  * riseset-format(--> Str) {...}
+
+    Returns the format required by the Perl program 'riseset.pl' in CPAN Perl module 'Astro::Montenbruck::RiseSet::RST':
+
+        ./script/riseset.pl --place=56N26 37E09 --twilight=civil
+
+  * location(:$format = 'decimal', --> Str) {
+
+    Returns the location in a single string in the specified format. For example:
+
+    In default decimal:
+
+        say $loc.location;
+        lat: 30.485092, lon: -86.4376157
+
+    Or in DMS:
+
+        say $loc.location(:format('dms');
+        lat: N30d29m6s, lon: W86d26m15s
+
 To Do
 =====
 

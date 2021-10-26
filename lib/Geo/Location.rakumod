@@ -57,7 +57,6 @@ method !check-lat-lon($lat is copy, $lon is copy) {
     # try all combos
 }
 
-=begin comment
 method lat-dms(:$debug --> Str) {
     # Returns the latitude in DMS format
     my $lat-sym = $.lat >= 0 ?? 'N' !! 'S';
@@ -84,7 +83,7 @@ method lon-dms(:$debug --> Str) {
     return "{$lon-sym}{$lon-deg}d{$lon-min}m{$lon-sec}s";
 }
 
-method riseset-format(:$debug --> Str) {
+method riseset-format(:$location, :$debug --> Str) {
     # Returns the format required by the Perl program 'riseset.pl' in
     # CPAN Perl module 'Astro::Montenbruck::RiseSet::RST':
     #
@@ -98,6 +97,11 @@ method riseset-format(:$debug --> Str) {
 
     my $lat-min = (($.lat.abs - $lat-deg).abs * 60.0).round;
     my $lon-min = (($.lon.abs - $lon-deg).abs * 60.0).round;
+
+    if $location {
+        my $loc = "lat: {$lat-deg}{$lat-sym}{$lat-min}, lon: {$lon-deg}{$lon-sym}{$lon-min}";
+        return $loc;
+    }
 
     my $place = "{$lat-deg}{$lat-sym}{$lat-min} {$lon-deg}{$lon-sym}{$lon-min}";
     if 0 or $debug {
@@ -116,7 +120,6 @@ method riseset-format(:$debug --> Str) {
     }
     return $place;
 }
-=end comment
 
 sub convert-lat($lat) is export(:convert-lat) {
 }
@@ -126,8 +129,14 @@ sub convert-lon($lon) is export(:convert-lon) {
 }
 
 method location(:$format = 'decimal') {
-    if $format ~~ /deg|h/ {
+    if $format ~~ /:i ^ dms/ {
         return "lat: {self.lat-dms}, lon: {self.lon-dms}"
+    }
+    elsif $format ~~ /:i ^ dec/ {
+        return "lat: {self.lat}, lon: {self.lon}"
+    }
+    elsif $format ~~ /:i ^ rst/ {
+        return self.riseset-format(:location);
     }
     else {
         return "lat: {self.lat}, lon: {self.lon}"

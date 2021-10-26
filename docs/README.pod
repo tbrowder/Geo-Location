@@ -87,6 +87,58 @@ $ export GEOLOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
 =item state    # two-letter ISO code
 =item timezone # for use with module DateTime::US
 
+=head3 Class methods
+
+In addition to the methods provided for the public attributes
+listed above, the following added methods provide some
+other ways of showing object data.
+
+=begin item
+lat-dms(--> Str) {...}
+
+Returns the latitude in DMS format
+=end item
+
+=begin item
+lon-dms(--> Str) {...}
+
+Returns the longitude in DMS format
+=end item
+
+
+=begin item
+riseset-format(--> Str) {...}
+
+Returns the format required by the Perl program 'riseset.pl' in
+CPAN Perl module 'Astro::Montenbruck::RiseSet::RST':
+
+=begin code
+./script/riseset.pl --place=56N26 37E09 --twilight=civil
+=end code
+=end item
+
+=begin item
+location(:$format = 'decimal', --> Str) {
+
+Returns the location in a single string in the specified format. For
+example:
+
+
+In default decimal:
+=begin code
+say $loc.location;
+lat: 30.485092, lon: -86.4376157
+=end code
+
+Or in DMS:
+
+=begin code
+say $loc.location(:format('dms');
+lat: N30d29m6s, lon: W86d26m15s
+=end code
+
+=end item
+
 =head1 To Do
 
 Allow other forms of lat/lon entry besides decimal.
