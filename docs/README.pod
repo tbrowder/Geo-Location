@@ -203,7 +203,7 @@ lat: 56N26, lon: 37E09
 
 =head1 To Do
 
-=item Allow other forms of lat/lon entry besides decimal.
+=item Allow other forms of lat/lon entry besides decimal
 =item Provide more methods for astronomical use
 
 =head1 AUTHOR
