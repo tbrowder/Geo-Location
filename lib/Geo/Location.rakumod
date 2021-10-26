@@ -241,7 +241,7 @@ method !new-from-defaults {
     $!state   = "FL";     # two-letter ISO code
     $!county  = "Santa Rosa";
     $!country = "US";   # two-char ISO code
-    $!region;    # EU, etc., multi-country area with DST rules
+    $!region  = '';    # EU, etc., multi-country area with DST rules
     $!notes   = "Coords are the center of Gulf Breeze City Hall as reported by Google Maps on 2021-10-24";
 }
 
