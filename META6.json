@@ -8,7 +8,7 @@
   "depends": [
     "JSON::Fast"
   ],
-  "description": "blah blah blah",
+  "description": "Provides location data for astronomical and other programs",
   "license": "Artistic-2.0",
   "name": "Geo::Location",
   "perl": "6.d",
