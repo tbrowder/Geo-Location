@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/tbrowder/Geo-Location/workflows/test/badge.svg)](https://github.com/tbrowder/Geo-Location/actions)
+
 NAME
 ====
 
@@ -25,7 +27,7 @@ DESCRIPTION
 
 **Geo::Location** Allows the user to define a geographical location for easy use either by manual entry, from a JSON description, or an environment variable (`GEO_LOCATION`).
 
-For now one must enter latitude and longitude using signed decimal numbers. One easy way to find those for a location is to use Google Maps (on a PC) and drop a location pin with its point at the place of interest. Then select the pin, right-click and see the lat/lon on the first line of data. (I have had some success also with doing that on an iPad, but it's a bit trickier for my tastes, hence my use of the PC for real mapping uses.)
+For now one must enter latitude and longitude using signed decimal numbers. One easy way to find those for a location is to use Google Maps (on a PC) and drop a location pin with its point at the place of interest. Then select the pin, right-click, and see the lat/lon on the first line of data. (I have had some success also with doing that on an iPad, but it's a bit trickier for my tastes, hence my use of a PC for real mapping uses.)
 
 Note the object has only two required parameters ($lat, $lon), but there are nine other attribute available. See them listed below.
 

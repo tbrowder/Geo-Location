@@ -33,7 +33,11 @@ submethod TWEAK {
     elsif $!json.defined {
         self!new-from-json
     }
-    elsif %*ENV<GEO_LOCATION>:exists {
+    elsif %*ENV<GEO_LOCATION>:exists 
+        and %*ENV<GEO_LOCATION> ~~ /'lat('/ 
+        and %*ENV<GEO_LOCATION> ~~ /'lon('/ 
+        and %*ENV<GEO_LOCATION>.chars > 12 {
+        # absolute minimum value: lat(0),lon(0)
         self!new-from-env
     }
     else {
@@ -153,8 +157,15 @@ method !new-from-json {
 
 method !new-from-env {
     # 11 recognized attributes
-    # $ export GEOLOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
+    # some test cases:
+    #     GEOLOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
+    #     GEOLOCATION='lat(42.4),lon(13.6),name("Baz Beach")';
+    #     GEOLOCATION='lat(42.4),lon(13.6),name(BazBeach)';
     my $s = %*ENV<GEO_LOCATION> // '';
+    die "FATAL: Empty or undefined env var GEO_LOCATION" if not $s;
+    my @w = split ',', $s;
+    
+    
 }
 
 method !new-from-defaults {
