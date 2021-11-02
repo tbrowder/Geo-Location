@@ -122,7 +122,7 @@ In addition to the methods provided for the public attributes listed above, the 
 
     Returns the longitude in RST format
 
-  * **location**(:$format = 'decimal', :$bare --> Str) {
+  * **location**(:$format = 'decimal', :bare --> Str) {
 
     Returns the location in a single string in the specified format. For example:
 
