@@ -117,9 +117,8 @@ method riseset-format(:$location,
         return "{$lon-deg}{$lon-sym}{$lon-min}";
     }
     elsif $location {
-        my $loc = "{$lat-deg}{$lat-sym}{$lat-min} {$lon-deg}{$lon-sym}{$lon-min}" if $bare;
-        my $loc = "lat: {$lat-deg}{$lat-sym}{$lat-min}, lon: {$lon-deg}{$lon-sym}{$lon-min}";
-        return $loc;
+        return "{$lat-deg}{$lat-sym}{$lat-min} {$lon-deg}{$lon-sym}{$lon-min}" if $bare;
+        return "lat: {$lat-deg}{$lat-sym}{$lat-min}, lon: {$lon-deg}{$lon-sym}{$lon-min}";
     }
 
     my $place = "{$lat-deg}{$lat-sym}{$lat-min} {$lon-deg}{$lon-sym}{$lon-min}";

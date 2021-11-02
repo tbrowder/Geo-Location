@@ -68,7 +68,6 @@ is $loc.location(:format('DEC'), :bare), "30.485092 -86.4376157";
 is $loc.location(:format('RST'), :bare), "30N29 86W26";
 is $loc.location(:format('rst'), :bare), "30N29 86W26";
 
-
 my @env-loc =
     #     GEOLOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
     "lat(42.4),lon(13.6),name('Baz Beach')",
