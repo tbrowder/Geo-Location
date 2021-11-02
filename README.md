@@ -19,7 +19,9 @@ Gulf Breeze, FL, USA
 > say $loc.location;
 lat: 30.485092, lon: -86.4376157
 say $loc.lat;
-say $loc.long;
+30.485092
+say $loc.lon;
+-86.4376157
 ```
 
 DESCRIPTION
@@ -52,7 +54,7 @@ Use an environment variable:
 
 Define desired attributes just like a manual entry but without the colons. Use double quotes on the entire value and single quotes inside, or the reverse, as desired. Note also strings without spaces do not require quotes inside the parentheses. Note also this is only used when (1) no manual or json methods are used and (2) a valid `GEO_LOCATION` environment variable is defined in the using environment.
 
-    $ export GEOLOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
+    $ export GEO_LOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
 
 ### Class attributes
 
@@ -104,12 +106,11 @@ In addition to the methods provided for the public attributes listed above, the 
 
     Returns the longitude in DMS format
 
-  * **riseset-format**(--> Str) {...}
+  * **riseset-format**(:bare --> Str) {...}
 
     Returns the format required by the Perl programs accompanying CPAN Perl module **Astro::Montenbruck** (in this module the format will also be referred to as '**RST**'):
 
         ./script/riseset.pl --place=30N29 86W26 --twilight=civil
-        lat: 30N29, lon: 86W26
 
     Note that Perl module's convention for the sign of East longitude is negative instead of positive for decimal entries, so it is important to use the provided RST format to avoid longitude errors.
 
@@ -121,7 +122,7 @@ In addition to the methods provided for the public attributes listed above, the 
 
     Returns the longitude in RST format
 
-  * **location**(:$format = 'decimal', :$plain = False --> Str) {
+  * **location**(:$format = 'decimal', :bare --> Str) {
 
     Returns the location in a single string in the specified format. For example:
 
@@ -129,16 +130,22 @@ In addition to the methods provided for the public attributes listed above, the 
 
         say $loc.location;
         lat: 30.485092, lon: -86.4376157
+        say $loc.location(:bare);
+        30.485092 -86.4376157
 
     Or in DMS:
 
         say $loc.location(:format('dms');
         lat: N30d29m6s, lon: W86d26m15s
+        say $loc.location(:format('dms'), :bare);
+        N30d29m6s W86d26m15s
 
     Or in RST:
 
-        say $loc.location(:format('rst', :plain);
+        say $loc.location(:format('rst'), :plain);
         lat: 30N29, lon: 86W26
+        say $loc.location(:format('rst', :plain);
+        30N29 86W26
 
 To Do
 =====

@@ -17,7 +17,9 @@ Gulf Breeze, FL, USA
 > say $loc.location;
 lat: 30.485092, lon: -86.4376157
 say $loc.lat;
-say $loc.long;
+30.485092
+say $loc.lon;
+-86.4376157
 =end code
 
 =head1 DESCRIPTION
@@ -73,7 +75,7 @@ a valid C<GEO_LOCATION> environment variable
 is defined in the using environment.
 
 =begin code
-$ export GEOLOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
+$ export GEO_LOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
 =end code
 
 =head3 Class attributes
@@ -145,7 +147,7 @@ Returns the longitude in DMS format
 =end item
 
 =begin item
-B<riseset-format>(--> Str) {...}
+B<riseset-format>(:bare --> Str) {...}
 
 Returns the format required by the Perl programs
 accompanying CPAN Perl module B<Astro::Montenbruck>
@@ -154,7 +156,6 @@ as 'B<RST>'):
 
 =begin code
 ./script/riseset.pl --place=30N29 86W26 --twilight=civil
-lat: 30N29, lon: 86W26
 =end code
 
 Note that Perl module's convention for the sign
@@ -176,7 +177,7 @@ Returns the longitude in RST format
 =end item
 
 =begin item
-B<location>(:$format = 'decimal', :$plain = False --> Str) {
+B<location>(:$format = 'decimal', :bare --> Str) {
 
 Returns the location in a single string in the specified format. For
 example:
@@ -186,6 +187,8 @@ In default decimal:
 =begin code
 say $loc.location;
 lat: 30.485092, lon: -86.4376157
+say $loc.location(:bare);
+30.485092 -86.4376157
 =end code
 
 Or in DMS:
@@ -193,13 +196,17 @@ Or in DMS:
 =begin code
 say $loc.location(:format('dms');
 lat: N30d29m6s, lon: W86d26m15s
+say $loc.location(:format('dms'), :bare);
+N30d29m6s W86d26m15s
 =end code
 
 Or in RST:
 
 =begin code
-say $loc.location(:format('rst', :plain);
+say $loc.location(:format('rst'), :plain);
 lat: 30N29, lon: 86W26
+say $loc.location(:format('rst', :plain);
+30N29 86W26
 =end code
 
 
