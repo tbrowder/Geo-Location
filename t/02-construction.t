@@ -2,7 +2,7 @@ use Test;
 
 use Geo::Location;
 
-plan 40;
+plan 48;
 
 # test defaults
 my $loc = Geo::Location.new;
@@ -58,6 +58,16 @@ is $loc.location(:format('dec')), "lat: 30.485092, lon: -86.4376157";
 is $loc.location(:format('DEC')), "lat: 30.485092, lon: -86.4376157";
 is $loc.location(:format('RST')), "lat: 30N29, lon: 86W26";
 is $loc.location(:format('rst')), "lat: 30N29, lon: 86W26";
+# add the bare versions
+is $loc.location(:format('dms'), :bare), "N30d29m6s W86d26m15s";
+is $loc.location(:format('DMS'), :bare), "N30d29m6s W86d26m15s";
+is $loc.location(:format('decimal'), :bare), "30.485092 -86.4376157";
+is $loc.location(:format('DECIMAL'), :bare), "30.485092 -86.4376157";
+is $loc.location(:format('dec'), :bare), "30.485092 -86.4376157";
+is $loc.location(:format('DEC'), :bare), "30.485092 -86.4376157";
+is $loc.location(:format('RST'), :bare), "30N29 86W26";
+is $loc.location(:format('rst'), :bare), "30N29 86W26";
+
 
 my @env-loc =
     #     GEOLOCATION="lat(42.4),lon(13.6),name('Baz Beach')";
