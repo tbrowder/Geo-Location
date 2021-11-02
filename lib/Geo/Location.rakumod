@@ -94,6 +94,7 @@ method lon-rst(:$debug --> Str) {
 method riseset-format(:$location,
                       :$lat,
                       :$lon,
+                      :$bare,
                       :$debug --> Str) {
     # Returns the format required by the Perl program 'riseset.pl' in
     # CPAN Perl module 'Astro::Montenbruck::RiseSet::RST':
@@ -116,6 +117,7 @@ method riseset-format(:$location,
         return "{$lon-deg}{$lon-sym}{$lon-min}";
     }
     elsif $location {
+        my $loc = "{$lat-deg}{$lat-sym}{$lat-min} {$lon-deg}{$lon-sym}{$lon-min}" if $bare;
         my $loc = "lat: {$lat-deg}{$lat-sym}{$lat-min}, lon: {$lon-deg}{$lon-sym}{$lon-min}";
         return $loc;
     }
@@ -145,18 +147,22 @@ sub convert-lon($lon) is export(:convert-lon) {
 
 }
 
-method location(:$format = 'decimal') {
+method location(:$format = 'decimal', :$bare) {
     if $format ~~ /:i ^ dms/ {
-        return "lat: {self.lat-dms}, lon: {self.lon-dms}"
+        return "{self.lat-dms} {self.lon-dms}" if $bare;
+        return "lat: {self.lat-dms}, lon: {self.lon-dms}";
     }
     elsif $format ~~ /:i ^ dec/ {
-        return "lat: {self.lat}, lon: {self.lon}"
+        return "{self.lat} {self.lon}" if $bare;
+        return "lat: {self.lat}, lon: {self.lon}";
     }
     elsif $format ~~ /:i ^ rst/ {
+        return self.riseset-format(:location, :bare) if $bare;
         return self.riseset-format(:location);
     }
     else {
-        return "lat: {self.lat}, lon: {self.lon}"
+        return "{self.lat} {self.lon}" if $bare;
+        return "lat: {self.lat}, lon: {self.lon}";
         #say "TODO: lat/lon in deg/min/sec";
     }
 }

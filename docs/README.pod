@@ -147,15 +147,20 @@ Returns the longitude in DMS format
 =begin item
 B<riseset-format>(--> Str) {...}
 
-Returns the format required by the Perl program 'riseset.pl' in
-CPAN Perl module 'Astro::Montenbruck::RiseSet::RST'
+Returns the format required by the Perl programs
+accompanying CPAN Perl module B<Astro::Montenbruck>
 (in this module the format will also be referred to
 as 'B<RST>'):
 
 =begin code
-./script/riseset.pl --place=56N26 37E09 --twilight=civil
+./script/riseset.pl --place=30N29 86W26 --twilight=civil
+lat: 30N29, lon: 86W26
 =end code
 
+Note that Perl module's convention for the sign
+of East longitude is negative instead of positive
+for decimal entries, so it is important to use
+the provided RST format to avoid longitude errors.
 =end item
 
 =begin item
@@ -171,7 +176,7 @@ Returns the longitude in RST format
 =end item
 
 =begin item
-B<location>(:$format = 'decimal', --> Str) {
+B<location>(:$format = 'decimal', :$plain = False --> Str) {
 
 Returns the location in a single string in the specified format. For
 example:
@@ -193,8 +198,8 @@ lat: N30d29m6s, lon: W86d26m15s
 Or in RST:
 
 =begin code
-say $loc.location(:format('rst');
-lat: 56N26, lon: 37E09
+say $loc.location(:format('rst', :plain);
+lat: 30N29, lon: 86W26
 =end code
 
 
