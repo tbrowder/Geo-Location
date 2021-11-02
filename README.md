@@ -164,7 +164,7 @@ Tom Browder `tom.browder@cpan.org`
 COPYRIGHT AND LICENSE
 =====================
 
-© 2020 Tom Browder
+© 2021 Tom Browder
 
 This library is free software; you may redistribute it or modify it under the Artistic License 2.0.
 
