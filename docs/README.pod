@@ -194,7 +194,7 @@ say $loc.location(:bare);
 Or in DMS:
 
 =begin code
-say $loc.location(:format('dms');
+say $loc.location(:format('dms'));
 lat: N30d29m6s, lon: W86d26m15s
 say $loc.location(:format('dms'), :bare);
 N30d29m6s W86d26m15s
@@ -203,9 +203,9 @@ N30d29m6s W86d26m15s
 Or in RST:
 
 =begin code
-say $loc.location(:format('rst'), :plain);
+say $loc.location(:format('rst'));
 lat: 30N29, lon: 86W26
-say $loc.location(:format('rst', :plain);
+say $loc.location(:format('rst'), :bare);
 30N29 86W26
 =end code
 

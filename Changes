@@ -1,6 +1,10 @@
 Revision history for Geo-Location
 
 {{$NEXT}}
+    - Add the C<:bare> parameter to location methods to strip the
+      string to just the two latitude/longitude values
+      separated by a single space
+    - Add appropriate new tests
 
 0.0.1  2021-10-26T14:57:44-05:00
     - Initial version

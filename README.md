@@ -122,7 +122,7 @@ In addition to the methods provided for the public attributes listed above, the 
 
     Returns the longitude in RST format
 
-  * **location**(:$format = 'decimal', :bare --> Str) {
+  * **location**(:$format = 'decimal', :$bare --> Str) {
 
     Returns the location in a single string in the specified format. For example:
 
@@ -135,16 +135,16 @@ In addition to the methods provided for the public attributes listed above, the 
 
     Or in DMS:
 
-        say $loc.location(:format('dms');
+        say $loc.location(:format('dms'));
         lat: N30d29m6s, lon: W86d26m15s
         say $loc.location(:format('dms'), :bare);
         N30d29m6s W86d26m15s
 
     Or in RST:
 
-        say $loc.location(:format('rst'), :plain);
+        say $loc.location(:format('rst'));
         lat: 30N29, lon: 86W26
-        say $loc.location(:format('rst', :plain);
+        say $loc.location(:format('rst'), :bare);
         30N29 86W26
 
 To Do
