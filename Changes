@@ -1,6 +1,8 @@
 Revision history for Geo-Location
 
 {{$NEXT}}
+
+0.0.3  2021-12-10T08:31:09-06:00
     - Publish to Zef repo
 
 0.0.2  2021-11-02T16:08:44-05:00
