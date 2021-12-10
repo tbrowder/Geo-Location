@@ -1,4 +1,4 @@
-unit class Geo::Location:ver<0.0.2>:auth<cpan:TBROWDER>;
+unit class Geo::Location;
 
 my %attrs; # defined in BEGIN block just prior to EOF
 
