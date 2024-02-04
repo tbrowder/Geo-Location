@@ -1,6 +1,9 @@
 Revision history for Geo-Location
 
 {{$NEXT}}
+    - Cleanup
+    - Bumped copyright year
+    - Add 3-OS tests
 
 0.0.3  2021-12-10T08:31:09-06:00
     - Publish to Zef repo
