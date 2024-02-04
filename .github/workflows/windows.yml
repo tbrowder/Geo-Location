@@ -26,4 +26,3 @@ jobs:
         run: zef install --/test --test-depends --deps-only .
       - name: Run Tests
         run: zef --debug test .
-        run: zef --debug --/prove --/tap-harness test .
